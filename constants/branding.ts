@@ -25,10 +25,10 @@ export const sluBrand = {
     }
   },
   logos: {
-    primaryBlue: assetPath("/branding/logos/primary/slu-soe-primary-blue.svg"),
-    primaryWhite: assetPath("/branding/logos/light/slu-soe-primary-white.svg"),
-    horizontalBlue: assetPath("/branding/logos/horizontal/slu-soe-horizontal-blue.svg"),
-    horizontalWhite: assetPath("/branding/logos/light/slu-soe-horizontal-white.svg")
+    primaryBlue: assetPath("/branding/logos/png/slu-soe-primary-blue.png"),
+    primaryWhite: assetPath("/branding/logos/png/slu-soe-primary-white.png"),
+    horizontalBlue: assetPath("/branding/logos/png/slu-soe-horizontal-blue.png"),
+    horizontalWhite: assetPath("/branding/logos/png/slu-soe-horizontal-white.png")
   },
   logoRules: [
     "Use SVG logos as the primary web format.",
