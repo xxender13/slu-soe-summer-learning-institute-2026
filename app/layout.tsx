@@ -3,8 +3,13 @@ import type { Metadata } from "next";
 import { SiteFooter } from "@/components/layout/site-footer";
 import "./globals.css";
 
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3002";
+const assetPath = (path: string) => `${basePath}${path}`;
+const absoluteAssetUrl = (path: string) => `${siteUrl}${path}`;
+
 export const metadata: Metadata = {
-  metadataBase: new URL("http://localhost:3002"),
+  metadataBase: new URL(siteUrl),
   title: {
     default: "3rd Annual Summer Learning Institute 2026 | SLU School of Education",
     template: "%s | SLU School of Education"
@@ -26,9 +31,9 @@ export const metadata: Metadata = {
     canonical: "/"
   },
   icons: {
-    icon: "/branding/favicon/icon.svg",
-    shortcut: "/branding/favicon/icon.svg",
-    apple: "/branding/favicon/icon.svg"
+    icon: assetPath("/branding/favicon/icon.svg"),
+    shortcut: assetPath("/branding/favicon/icon.svg"),
+    apple: assetPath("/branding/favicon/icon.svg")
   },
   openGraph: {
     title: "3rd Annual Summer Learning Institute 2026 | SLU School of Education",
@@ -36,7 +41,7 @@ export const metadata: Metadata = {
     siteName: "SLU School of Education",
     images: [
       {
-        url: "/branding/social/og-logo.svg",
+        url: absoluteAssetUrl("/branding/social/og-logo.svg"),
         width: 1200,
         height: 630,
         alt: "Saint Louis University School of Education logo"
@@ -48,7 +53,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "3rd Annual Summer Learning Institute 2026 | SLU School of Education",
     description: "A premium professional learning summit for educators and community partners.",
-    images: ["/branding/social/og-logo.svg"]
+    images: [absoluteAssetUrl("/branding/social/og-logo.svg")]
   },
   robots: {
     index: true,

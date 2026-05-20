@@ -1,3 +1,6 @@
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+const assetPath = (path: string) => `${basePath}${path}`;
+
 export const sluBrand = {
   name: "Saint Louis University School of Education",
   instituteName: "Summer Learning Institute",
@@ -22,10 +25,10 @@ export const sluBrand = {
     }
   },
   logos: {
-    primaryBlue: "/branding/logos/primary/slu-soe-primary-blue.svg",
-    primaryWhite: "/branding/logos/light/slu-soe-primary-white.svg",
-    horizontalBlue: "/branding/logos/horizontal/slu-soe-horizontal-blue.svg",
-    horizontalWhite: "/branding/logos/light/slu-soe-horizontal-white.svg"
+    primaryBlue: assetPath("/branding/logos/primary/slu-soe-primary-blue.svg"),
+    primaryWhite: assetPath("/branding/logos/light/slu-soe-primary-white.svg"),
+    horizontalBlue: assetPath("/branding/logos/horizontal/slu-soe-horizontal-blue.svg"),
+    horizontalWhite: assetPath("/branding/logos/light/slu-soe-horizontal-white.svg")
   },
   logoRules: [
     "Use SVG logos as the primary web format.",
