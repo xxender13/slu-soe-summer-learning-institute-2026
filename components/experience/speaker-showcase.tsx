@@ -18,8 +18,7 @@ function initials(name: string) {
 
 function speakerAssetPath(path: string) {
   if (!path || /^https?:\/\//.test(path)) return path;
-  const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
-  return `${basePath}${path}`;
+  return path.replace(/^\//, "");
 }
 
 function SpeakerAvatar({ speaker, size = "md" }: { speaker: EventSpeaker; size?: "sm" | "md" | "lg" }) {
