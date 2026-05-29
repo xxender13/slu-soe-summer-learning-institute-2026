@@ -11,5 +11,5 @@ export const primaryNavigation: NavigationItem[] = [
 
 export const utilityNavigation: NavigationItem[] = [
   { label: "Registration", href: "#registration" },
-  { label: "Contact", href: "mailto:soe-events@slu.edu" }
+  { label: "Contact", href: "mailto: oscp@slu.edu" }
 ];

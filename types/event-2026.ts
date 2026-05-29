@@ -1,19 +1,8 @@
-export type EventSpeaker = {
-  id: string;
-  name: string;
-  role: string;
-  organization: string;
-  bio: string;
-  presentationExperience: string;
+import type { GeneratedSpeaker } from "@/types/speaker.types";
+
+export type EventSpeaker = GeneratedSpeaker & {
   image: string;
-  sessionTitle: string;
   sessionDescription: string;
-  extendedDescription: string;
-  takeaways: string[];
-  focusAreas: string[];
-  audience: string[];
-  experienceLevel: string;
-  sessionFormat: string;
   tags: string[];
   mission: string;
   expertise: string[];

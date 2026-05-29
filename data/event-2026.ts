@@ -11,10 +11,8 @@ export const event2026 = {
   recapVideoLabel: "School of Education Summer Learning Institute 2025 - YouTube",
   recapVideoUrl: "https://youtu.be/ItNst1rxuTU?si=_DD4PhYzVIGoWk1C",
   recapVideoEmbedUrl: "https://www.youtube-nocookie.com/embed/ItNst1rxuTU",
-  calendlyUrl: "https://calendly.com/",
-  zoomUrl: "https://zoom.us/",
-  contactEmail: "soe-events@slu.edu",
-  registrationUrl: "mailto:soe-events@slu.edu?subject=Summer%20Learning%20Institute%202026%20Updates"
+  contactEmail: " oscp@slu.edu",
+  registrationUrl: "mailto: oscp@slu.edu?subject=Summer%20Learning%20Institute%202026%20Updates"
 } as const;
 
 export const eventNavigation = [

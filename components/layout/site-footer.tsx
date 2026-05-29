@@ -32,12 +32,8 @@ export function SiteFooter() {
               <a href={`mailto:${event2026.contactEmail}`} className="font-heading text-lg font-semibold text-secondary-foreground/85 hover:text-secondary-foreground">
                 Email
               </a>
-              <a href={event2026.calendlyUrl} className="font-heading text-lg font-semibold text-secondary-foreground/85 hover:text-secondary-foreground">
-                Calendly
-              </a>
-              <a href={event2026.zoomUrl} className="font-heading text-lg font-semibold text-secondary-foreground/85 hover:text-secondary-foreground">
-                Zoom
-              </a>
+              
+              
               <a href="#faq" className="font-heading text-lg font-semibold text-secondary-foreground/85 hover:text-secondary-foreground">
                 Accessibility
               </a>

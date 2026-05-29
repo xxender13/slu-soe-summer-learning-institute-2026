@@ -15,7 +15,7 @@ export const footerGroups: FooterGroup[] = [
     links: [
       { label: "Partners", href: "#partners" },
       { label: "FAQ", href: "#faq" },
-      { label: "Email the Team", href: "mailto:soe-events@slu.edu" }
+      { label: "Email the Team", href: "mailto:oscp@slu.edu" }
     ]
   }
 ];

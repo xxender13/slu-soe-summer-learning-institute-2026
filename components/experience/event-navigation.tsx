@@ -44,17 +44,18 @@ export function EventNavigation() {
           : "border-white/10 bg-slu-grand/80 text-white"
       }`}
     >
-      <div className="container flex h-20 items-center justify-between gap-5">
-        <a href="#top" className="shrink-0 rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent">
+      <div className="container flex h-20 items-center justify-between gap-3 lg:gap-4">
+        <a href="#top" className="-ml-2 shrink-0 rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent sm:-ml-4">
           <BrandLogo
             tone={isPastHero ? "dark" : "light"}
             orientation="horizontal"
-            className="h-11 w-[11.5rem] sm:w-[13rem]"
+            className="h-20 w-72 overflow-hidden sm:w-80"
+            imageClassName="h-full w-full max-h-none max-w-none object-cover object-[center_52%]"
             priority
           />
         </a>
         <nav
-          className={`hidden items-center gap-1 rounded-full border p-1 md:flex ${
+          className={`hidden min-w-0 items-center gap-0.5 rounded-full border p-1 lg:flex ${
             isPastHero ? "border-border bg-muted/70" : "border-white/15 bg-white/[0.08]"
           }`}
           aria-label="Event navigation"
@@ -63,7 +64,7 @@ export function EventNavigation() {
             <a
               key={item.href}
               href={item.href}
-              className={`rounded-full px-4 py-2 font-label text-xs font-semibold uppercase tracking-[0.14em] transition ${
+              className={`rounded-full px-3 py-2 font-label text-xs font-semibold uppercase tracking-[0.1em] transition xl:px-4 xl:tracking-[0.14em] ${
                 active === item.href
                   ? isPastHero
                     ? "bg-primary text-primary-foreground"
@@ -79,7 +80,7 @@ export function EventNavigation() {
         </nav>
         <a
           href="#registration"
-          className={`rounded-full px-5 py-3 font-label text-xs font-bold uppercase tracking-[0.14em] transition hover:-translate-y-0.5 ${
+          className={`shrink-0 rounded-full px-4 py-3 font-label text-xs font-bold uppercase tracking-[0.1em] transition hover:-translate-y-0.5 sm:px-5 sm:tracking-[0.14em] ${
             isPastHero
               ? "bg-primary text-primary-foreground shadow-soft"
               : "bg-accent text-accent-foreground"

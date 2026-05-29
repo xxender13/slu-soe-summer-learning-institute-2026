@@ -47,7 +47,7 @@ export default function Event2026Home() {
   return (
     <>
       <EventNavigation />
-      <main id="top" className="overflow-hidden">
+      <main id="top" className="overflow-hidden" suppressHydrationWarning>
         <section className="relative min-h-screen bg-slu-hero pt-20 text-primary-foreground">
           <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,36,77,0.05),rgba(0,36,77,0.45))]" />
           <div className="container relative grid min-h-[calc(100vh-5rem)] items-center gap-12 py-14 lg:grid-cols-[1.08fr_0.92fr] lg:py-20">
@@ -99,27 +99,28 @@ export default function Event2026Home() {
         </section>
 
         <section id="why" className="bg-background py-section-sm lg:py-section">
-          <div className="container grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+          <div className="container grid gap-12 lg:grid-cols-[0.92fr_1.08fr] lg:items-start">
             <MotionReveal>
               <p className="font-label text-eyebrow font-semibold uppercase text-primary">Why this institute matters</p>
-              <h2 className="mt-5 font-heading text-section-title font-bold text-foreground">
-                Educators are leading through a changing world. This institute gives them room to build what comes next.
+              <h2 className="mt-5 max-w-3xl font-heading text-4xl font-bold leading-tight text-foreground sm:text-5xl">
+                Educators are leading through a changing world. The Summer Learning Institute helps them build stronger, more just learning communities.
               </h2>
             </MotionReveal>
             <MotionReveal>
-              <div className="rounded-xl border bg-card p-7 shadow-card sm:p-8">
-                <p className="font-body text-xl leading-9 text-muted-foreground sm:text-2xl sm:leading-10">
-                  Hosted by the {event2026.hostedBy.join(" and ")}, the institute creates a premium,
-                  community-centered space for learning that is practical enough for Monday morning and ambitious enough
-                  for long-term systems change.
-                </p>
-                <div className="mt-8 grid gap-4 sm:grid-cols-2">
-                  {communityOutcomes.map((outcome) => (
-                    <div key={outcome} className="rounded-lg bg-muted p-5">
-                      <Handshake className="h-5 w-5 text-primary" aria-hidden="true" />
-                      <p className="mt-4 font-heading text-lg font-bold">{outcome}</p>
-                    </div>
-                  ))}
+              <div className="rounded-[1.75rem] border border-border bg-card p-8 shadow-card sm:p-10">
+                <div className="space-y-6 text-foreground">
+                  <p className="max-w-3xl text-lg leading-8 text-muted-foreground sm:text-xl sm:leading-9">
+                    The Summer Learning Institute exists to bring educators together around the shared work of creating stronger, more just, and more responsive learning communities for all students.
+                  </p>
+                  <p className="max-w-3xl text-lg leading-8 text-muted-foreground sm:text-xl sm:leading-9">
+                    As schools continue to navigate changing educational, social, and technological landscapes, professional learning remains essential to growth, innovation, and meaningful systems change.
+                  </p>
+                  <p className="max-w-3xl text-lg leading-8 text-muted-foreground sm:text-xl sm:leading-9">
+                    The Saint Louis University School of Education recognizes that educators today serve learners with increasingly diverse strengths, identities, experiences, and needs. In a region shaped by a wide range of educational contexts and student experiences, collaboration across roles, schools, and sectors matters more than ever.
+                  </p>
+                  <p className="max-w-3xl text-lg leading-8 text-muted-foreground sm:text-xl sm:leading-9">
+                    Through the Summer Learning Institute, SLU seeks to impact the St. Louis community by creating opportunities that encourage reflection, instructional growth, innovation, cross-sector collaboration, and justice-centered practice.
+                  </p>
                 </div>
               </div>
             </MotionReveal>

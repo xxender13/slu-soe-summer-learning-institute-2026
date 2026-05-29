@@ -16,6 +16,40 @@ function initials(name: string) {
     .toUpperCase();
 }
 
+function SpeakerAvatar({ speaker, size = "md" }: { speaker: EventSpeaker; size?: "sm" | "md" | "lg" }) {
+  const [failed, setFailed] = useState(false);
+  const dimensions = {
+    sm: "h-11 w-11",
+    md: "h-16 w-16",
+    lg: "h-28 w-28"
+  };
+  const textSize = {
+    sm: "text-sm",
+    md: "text-xl",
+    lg: "text-3xl"
+  };
+  const src = !failed && speaker.headshot ? speaker.headshot : "/speakers/fallback.svg";
+
+  return (
+    <div className={`${dimensions[size]} overflow-hidden rounded-full bg-primary text-primary-foreground`}>
+      {src ? (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img
+          src={src}
+          alt={`Photo of ${speaker.name}`}
+          className="h-full w-full object-cover"
+          loading="lazy"
+          onError={() => setFailed(true)}
+        />
+      ) : (
+        <span className={`flex h-full w-full items-center justify-center font-heading font-bold ${textSize[size]}`}>
+          {initials(speaker.name)}
+        </span>
+      )}
+    </div>
+  );
+}
+
 function buildFilters(speakers: EventSpeaker[]) {
   const counts = new Map<string, number>();
   speakers.forEach((speaker) => {
@@ -90,8 +124,8 @@ export function SpeakerShowcase({ speakers }: { speakers: EventSpeaker[] }) {
             onClick={() => setSelected(speaker)}
           >
             <div className="flex items-start gap-5">
-              <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-full bg-primary text-primary-foreground">
-                <span className="font-heading text-xl font-bold">{initials(speaker.name)}</span>
+              <div className="shrink-0">
+                <SpeakerAvatar speaker={speaker} />
               </div>
               <div className="min-w-0">
                 <p className="font-label text-xs font-semibold uppercase tracking-[0.14em] text-primary">
@@ -103,9 +137,13 @@ export function SpeakerShowcase({ speakers }: { speakers: EventSpeaker[] }) {
             </div>
             <div className="my-7 h-px bg-border" />
             <p className="font-heading text-lg font-bold text-card-foreground">{speaker.sessionTitle}</p>
-            <p className="mt-3 line-clamp-3 font-body text-base leading-7 text-muted-foreground">
-              {speaker.sessionDescription || speaker.bio}
+            <p className="mt-4 line-clamp-3 font-body text-sm leading-6 text-muted-foreground">
+              {speaker.bio || speaker.sessionDescription}
             </p>
+            <div className="mt-6 flex items-center gap-2 text-sm font-semibold text-primary">
+              <span>Learn more</span>
+              <span aria-hidden="true">→</span>
+            </div>
           </motion.button>
         ))}
       </div>
@@ -160,8 +198,8 @@ export function SpeakerShowcase({ speakers }: { speakers: EventSpeaker[] }) {
               onClick={() => setSelected(speaker)}
             >
               <div className="flex items-start gap-3">
-                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-primary text-primary-foreground">
-                  <span className="font-heading text-sm font-bold">{initials(speaker.name)}</span>
+                <div className="shrink-0">
+                  <SpeakerAvatar speaker={speaker} size="sm" />
                 </div>
                 <div className="min-w-0">
                   <h4 className="truncate font-heading text-base font-bold text-foreground">{speaker.name}</h4>
@@ -211,12 +249,17 @@ export function SpeakerShowcase({ speakers }: { speakers: EventSpeaker[] }) {
               onClick={(event) => event.stopPropagation()}
             >
               <div className="flex items-start justify-between gap-5">
-                <div>
-                  <p className="font-label text-eyebrow font-semibold uppercase text-primary">{selected.role || "Presenter"}</p>
-                  <h2 id="speaker-dialog-title" className="mt-3 font-heading text-4xl font-bold text-foreground">
-                    {selected.name}
-                  </h2>
-                  <p className="mt-2 font-heading text-lg font-semibold text-muted-foreground">{selected.organization}</p>
+                <div className="flex min-w-0 items-start gap-5">
+                  <div className="hidden shrink-0 sm:block">
+                    <SpeakerAvatar speaker={selected} size="lg" />
+                  </div>
+                  <div className="min-w-0">
+                    <p className="font-label text-eyebrow font-semibold uppercase text-primary">{selected.role || "Presenter"}</p>
+                    <h2 id="speaker-dialog-title" className="mt-3 font-heading text-4xl font-bold text-foreground">
+                      {selected.name}
+                    </h2>
+                    <p className="mt-2 font-heading text-lg font-semibold text-muted-foreground">{selected.organization}</p>
+                  </div>
                 </div>
                 <button
                   type="button"
@@ -227,9 +270,9 @@ export function SpeakerShowcase({ speakers }: { speakers: EventSpeaker[] }) {
                   <X className="h-5 w-5" aria-hidden="true" />
                 </button>
               </div>
-              <div className="mt-8 grid gap-8 lg:grid-cols-[0.85fr_1.15fr]">
+              <div className="mt-8 grid gap-8 lg:grid-cols-[0.95fr_1.05fr]">
                 <div className="rounded-lg bg-muted p-6">
-                  <h3 className="font-heading text-2xl font-bold">Expertise</h3>
+                  <h3 className="font-heading text-2xl font-bold">Focus areas</h3>
                   <div className="mt-5 flex flex-wrap gap-2">
                     {[...selected.focusAreas, ...selected.audience].slice(0, 8).map((tag) => (
                       <span key={tag} className="rounded-full bg-primary px-3 py-1 font-label text-xs font-semibold uppercase tracking-[0.12em] text-primary-foreground">
@@ -247,16 +290,42 @@ export function SpeakerShowcase({ speakers }: { speakers: EventSpeaker[] }) {
                       </ul>
                     </>
                   ) : null}
+                  {selected.additionalPresenters.length ? (
+                    <div className="mt-8 rounded-xl bg-background p-5">
+                      <p className="font-label text-eyebrow font-semibold uppercase text-primary">Co-presenters</p>
+                      <ul className="mt-3 space-y-2 font-body text-base leading-7 text-muted-foreground">
+                        {selected.additionalPresenters.map((presenter) => (
+                          <li key={`${presenter.name}-${presenter.email ?? "no-email"}`}>
+                            <span className="font-semibold text-foreground">{presenter.name}</span>
+                            {presenter.email ? ` • ${presenter.email}` : ""}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  ) : null}
                 </div>
                 <div>
-                  <p className="font-label text-eyebrow font-semibold uppercase text-primary">Session Topic</p>
+                  <p className="font-label text-eyebrow font-semibold uppercase text-primary">Session topic</p>
                   <h3 className="mt-3 font-heading text-3xl font-bold">{selected.sessionTitle}</h3>
-                  <p className="mt-5 font-body text-lg leading-8 text-muted-foreground">
-                    {selected.sessionDescription || selected.bio}
-                  </p>
-                  <div className="mt-8 rounded-lg border p-5">
-                    <p className="font-label text-eyebrow font-semibold uppercase text-primary">Speaker Mission</p>
-                    <p className="mt-3 font-body text-base leading-7 text-muted-foreground">{selected.mission || selected.bio}</p>
+                  <div className="mt-6 space-y-6">
+                    <div>
+                      {selected.bio && (
+                      <>
+                        <p className="font-label text-eyebrow font-semibold uppercase text-primary">Presenter biography</p>
+                        <p className="mt-3 font-body text-lg leading-8 text-muted-foreground">{selected.bio}</p>
+                      </>
+                    )}
+                    </div>
+                    <div>
+                      <p className="font-label text-eyebrow font-semibold uppercase text-primary">Session description</p>
+                      <p className="mt-3 font-body text-lg leading-8 text-muted-foreground">{selected.sessionDescription || selected.extendedDescription || selected.bio}</p>
+                    </div>
+                    <div className="rounded-lg border p-5">
+                      <p className="font-label text-eyebrow font-semibold uppercase text-primary">Organization</p>
+                      <p className="mt-3 font-body text-base leading-7 text-muted-foreground">{selected.organization}</p>
+                      <p className="mt-6 font-label text-eyebrow font-semibold uppercase text-primary">Role</p>
+                      <p className="mt-3 font-body text-base leading-7 text-muted-foreground">{selected.role}</p>
+                    </div>
                   </div>
                 </div>
               </div>

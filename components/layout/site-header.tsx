@@ -10,8 +10,8 @@ export function SiteHeader() {
   return (
     <header className="sticky top-0 z-50 border-b bg-background/95 backdrop-blur">
       <div className="container flex h-header items-center justify-between gap-6">
-        <Link href="/" className="block shrink-0" aria-label="Saint Louis University School of Education home">
-          <BrandLogo priority className="h-12 sm:h-14" />
+        <Link href="/" className="-ml-3 block shrink-0 sm:-ml-6" aria-label="Saint Louis University School of Education home">
+          <BrandLogo priority className="h-16 sm:h-20" />
         </Link>
         <nav className="hidden items-center gap-6 md:flex" aria-label="Primary navigation">
           {primaryNavigation.map((item) => (
