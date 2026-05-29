@@ -16,6 +16,12 @@ function initials(name: string) {
     .toUpperCase();
 }
 
+function speakerAssetPath(path: string) {
+  if (!path || /^https?:\/\//.test(path)) return path;
+  const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+  return `${basePath}${path}`;
+}
+
 function SpeakerAvatar({ speaker, size = "md" }: { speaker: EventSpeaker; size?: "sm" | "md" | "lg" }) {
   const [failed, setFailed] = useState(false);
   const dimensions = {
@@ -28,7 +34,7 @@ function SpeakerAvatar({ speaker, size = "md" }: { speaker: EventSpeaker; size?:
     md: "text-xl",
     lg: "text-3xl"
   };
-  const src = !failed && speaker.headshot ? speaker.headshot : "/speakers/fallback.svg";
+  const src = speakerAssetPath(!failed && speaker.headshot ? speaker.headshot : "/speakers/fallback.svg");
 
   return (
     <div className={`${dimensions[size]} overflow-hidden rounded-full bg-primary text-primary-foreground`}>
