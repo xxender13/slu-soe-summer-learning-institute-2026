@@ -20,6 +20,7 @@ export type GeneratedSpeaker = {
   experienceLevel: string;
   sessionFormat: string;
   headshot: string;
+  headshots?: string[];
   additionalPresenters: AdditionalPresenter[];
 };
 

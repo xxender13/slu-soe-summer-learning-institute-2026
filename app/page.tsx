@@ -2,7 +2,6 @@ import {
   ArrowRight,
   CalendarDays,
   Compass,
-  Handshake,
   MapPin,
   PenTool,
   Scale,
@@ -21,7 +20,6 @@ import { BrandLogo } from "@/components/branding/brand-logo";
 import { Button } from "@/components/ui/button";
 import {
   agendaDays,
-  communityOutcomes,
   event2026,
   eventFaqs,
   eventHighlights,
@@ -47,7 +45,7 @@ export default function Event2026Home() {
   return (
     <>
       <EventNavigation />
-      <main id="top" className="overflow-hidden" suppressHydrationWarning>
+      <main id="top" className="overflow-hidden">
         <section className="relative min-h-screen bg-slu-hero pt-20 text-primary-foreground">
           <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,36,77,0.05),rgba(0,36,77,0.45))]" />
           <div className="container relative grid min-h-[calc(100vh-5rem)] items-center gap-12 py-14 lg:grid-cols-[1.08fr_0.92fr] lg:py-20">

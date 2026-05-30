@@ -22,7 +22,7 @@ function speakerAssetPath(path: string) {
 }
 
 function SpeakerAvatar({ speaker, size = "md" }: { speaker: EventSpeaker; size?: "sm" | "md" | "lg" }) {
-  const [failed, setFailed] = useState(false);
+  const [failedImages, setFailedImages] = useState<Record<string, boolean>>({});
   const dimensions = {
     sm: "h-11 w-11",
     md: "h-16 w-16",
@@ -33,24 +33,70 @@ function SpeakerAvatar({ speaker, size = "md" }: { speaker: EventSpeaker; size?:
     md: "text-xl",
     lg: "text-3xl"
   };
-  const src = speakerAssetPath(!failed && speaker.headshot ? speaker.headshot : "/speakers/fallback.svg");
+
+  const headshotPaths = speaker.headshots?.filter(Boolean) ?? [];
+  if (speaker.headshot && !headshotPaths.includes(speaker.headshot)) {
+    headshotPaths.unshift(speaker.headshot);
+  }
+
+  const additionalInitials = speaker.additionalPresenters
+    .map((presenter) => initials(presenter.name))
+    .filter(Boolean)
+    .slice(0, 2);
+
+  const slots = [
+    ...headshotPaths.slice(0, 2).map((src) => ({ type: "image" as const, src })),
+    ...additionalInitials.map((initials) => ({ type: "initial" as const, initials }))
+  ].slice(0, 3);
+
+  if (slots.length <= 1) {
+    const src = speakerAssetPath(!failedImages[speaker.headshot] && speaker.headshot ? speaker.headshot : "/speakers/fallback.svg");
+
+    return (
+      <div className={`${dimensions[size]} overflow-hidden rounded-full bg-primary text-primary-foreground`}>
+        {src ? (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            src={src}
+            alt={`Photo of ${speaker.name}`}
+            className="h-full w-full object-cover"
+            loading="lazy"
+            onError={() => setFailedImages((prev) => ({ ...prev, [speaker.headshot]: true }))}
+          />
+        ) : (
+          <span className={`flex h-full w-full items-center justify-center font-heading font-bold ${textSize[size]}`}>
+            {initials(speaker.name)}
+          </span>
+        )}
+      </div>
+    );
+  }
 
   return (
-    <div className={`${dimensions[size]} overflow-hidden rounded-full bg-primary text-primary-foreground`}>
-      {src ? (
-        // eslint-disable-next-line @next/next/no-img-element
-        <img
-          src={src}
-          alt={`Photo of ${speaker.name}`}
-          className="h-full w-full object-cover"
-          loading="lazy"
-          onError={() => setFailed(true)}
-        />
-      ) : (
-        <span className={`flex h-full w-full items-center justify-center font-heading font-bold ${textSize[size]}`}>
-          {initials(speaker.name)}
-        </span>
-      )}
+    <div className="flex items-center gap-[-0.45rem]">
+      {slots.map((slot, index) => {
+        const overlap = index === 0 ? "" : "border-2 border-background";
+        const slotSize = dimensions[size];
+
+        return (
+          <div key={`${slot.type}-${index}`} className={`${slotSize} overflow-hidden rounded-full bg-primary text-primary-foreground ${overlap}`}>
+            {slot.type === "image" ? (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img
+                src={speakerAssetPath(!failedImages[slot.src] ? slot.src : "/speakers/fallback.svg")}
+                alt={`Photo for ${speaker.name}`}
+                className="h-full w-full object-cover"
+                loading="lazy"
+                onError={() => setFailedImages((prev) => ({ ...prev, [slot.src]: true }))}
+              />
+            ) : (
+              <span className={`flex h-full w-full items-center justify-center font-heading font-bold ${textSize[size]}`}>
+                {slot.initials}
+              </span>
+            )}
+          </div>
+        );
+      })}
     </div>
   );
 }
@@ -72,6 +118,8 @@ export function SpeakerShowcase({ speakers }: { speakers: EventSpeaker[] }) {
 
   const featured = useMemo(() => speakers.slice(0, 3), [speakers]);
   const filters = useMemo(() => buildFilters(speakers), [speakers]);
+  const validAdditionalPresenterNames = (speaker: EventSpeaker) =>
+    speaker.additionalPresenters.map((presenter) => presenter.name?.trim()).filter(Boolean);
 
   const filteredSpeakers = useMemo(() => {
     const normalizedQuery = query.trim().toLowerCase();
@@ -137,7 +185,11 @@ export function SpeakerShowcase({ speakers }: { speakers: EventSpeaker[] }) {
                   {speaker.role || "Presenter"}
                 </p>
                 <h3 className="mt-2 font-heading text-2xl font-bold text-card-foreground">{speaker.name}</h3>
-                <p className="mt-2 font-body text-sm leading-6 text-muted-foreground">{speaker.organization}</p>
+                <p className="mt-2 font-body text-sm leading-6 text-muted-foreground">
+                  {validAdditionalPresenterNames(speaker).length
+                    ? `with ${validAdditionalPresenterNames(speaker).join(", ")}`
+                    : speaker.organization}
+                </p>
               </div>
             </div>
             <div className="my-7 h-px bg-border" />
@@ -295,16 +347,18 @@ export function SpeakerShowcase({ speakers }: { speakers: EventSpeaker[] }) {
                       </ul>
                     </>
                   ) : null}
-                  {selected.additionalPresenters.length ? (
+                  {selected.additionalPresenters.filter((presenter) => presenter.name?.trim()).length ? (
                     <div className="mt-8 rounded-xl bg-background p-5">
                       <p className="font-label text-eyebrow font-semibold uppercase text-primary">Co-presenters</p>
                       <ul className="mt-3 space-y-2 font-body text-base leading-7 text-muted-foreground">
-                        {selected.additionalPresenters.map((presenter) => (
-                          <li key={`${presenter.name}-${presenter.email ?? "no-email"}`}>
-                            <span className="font-semibold text-foreground">{presenter.name}</span>
-                            {presenter.email ? ` • ${presenter.email}` : ""}
-                          </li>
-                        ))}
+                        {selected.additionalPresenters
+                          .filter((presenter) => presenter.name?.trim())
+                          .map((presenter) => (
+                            <li key={`${presenter.name}-${presenter.email ?? "no-email"}`}>
+                              <span className="font-semibold text-foreground">{presenter.name}</span>
+                              {presenter.email ? ` • ${presenter.email}` : ""}
+                            </li>
+                          ))}
                       </ul>
                     </div>
                   ) : null}

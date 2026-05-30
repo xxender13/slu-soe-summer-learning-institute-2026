@@ -32,13 +32,8 @@
     ],
     "experienceLevel": "Introductory (Little to no experience with this topic/subject)",
     "sessionFormat": "Presentation with Discussion",
-    "headshot": "/speakers/leslie-t-tolliver-e3329707.jpg",
-    "additionalPresenters": [
-      {
-        "name": "",
-        "email": "thephoenixgroupstl@outlook.com"
-      }
-    ]
+    "headshot": "/speakers/leslie-t-tolliver-e3329707-1.jpg",
+    "additionalPresenters": []
   },
   {
     "id": "herman-armstrong-212bf595",
@@ -75,18 +70,13 @@
     ],
     "experienceLevel": "Intermediate (Some experience with this topic/subject), Advanced (A lot of experience with this topic/subject)",
     "sessionFormat": "Interactive Workshop",
-    "headshot": "/speakers/herman-armstrong-212bf595.png",
-    "additionalPresenters": [
-      {
-        "name": "",
-        "email": "hcarmstrong@kathairo.com"
-      }
-    ]
+    "headshot": "/speakers/herman-armstrong-212bf595-1.png",
+    "additionalPresenters": []
   },
   {
-    "id": "shaquan-teacher-19573f79",
-    "name": "Shaquan- Teacher",
-    "title": "Speaker - Coach",
+    "id": "coach-shaquan-4fdc9108",
+    "name": "Coach Shaquan",
+    "title": "Teacher | Speaker | Coach",
     "organization": "PRT Coaching Services",
     "role": "Founder + Principal Coach",
     "bio": "Coach Shaquan is a Certified Life and Relationship Coach, speaker, and teacher who helps leaders at all levels challenge what they think, check what they believe, and choose how they show up in the classroom, workplace, and everyday life. She is the creator of the Check Your BS® (Belief System) transformational coaching framework, designed to uncover how habitual thoughts shape communication, relationships, and choice-making. Integrating Energy Leadership™, her work helps people recognize how their energy and belief systems influence behavior under both normal and high-pressure situations. She creates spaces where people feel seen, heard, and willing to tell the truth about what’s really driving their actions. Her work extends throughout the St. Louis community and across the U.S., delivering experiences that move beyond inspiration into measurable, transformative change.",
@@ -120,13 +110,8 @@
     ],
     "experienceLevel": "Intermediate (Some experience with this topic/subject)",
     "sessionFormat": "Interactive Workshop",
-    "headshot": "/speakers/shaquan-teacher-19573f79.png",
-    "additionalPresenters": [
-      {
-        "name": "",
-        "email": "coach@coachshaquanspeaks.com"
-      }
-    ]
+    "headshot": "/speakers/coach-shaquan-4fdc9108-1.png",
+    "additionalPresenters": []
   },
   {
     "id": "urail-s-williams-mba-445240f2",
@@ -164,13 +149,8 @@
     ],
     "experienceLevel": "Intermediate (Some experience with this topic/subject)",
     "sessionFormat": "Interactive Workshop",
-    "headshot": "/speakers/urail-s-williams-mba-445240f2.png",
-    "additionalPresenters": [
-      {
-        "name": "",
-        "email": "urailw@ciicsconsultingllc.com"
-      }
-    ]
+    "headshot": "/speakers/urail-s-williams-mba-445240f2-1.png",
+    "additionalPresenters": []
   },
   {
     "id": "kerry-smigielski-a44de06d",
@@ -200,13 +180,8 @@
     ],
     "experienceLevel": "Introductory (Little to no experience with this topic/subject), Intermediate (Some experience with this topic/subject)",
     "sessionFormat": "Interactive Workshop, Presentation with Discussion",
-    "headshot": "/speakers/kerry-smigielski-a44de06d.jpg",
-    "additionalPresenters": [
-      {
-        "name": "",
-        "email": "kerrysmigielski@gmail.com"
-      }
-    ]
+    "headshot": "/speakers/kerry-smigielski-a44de06d-1.jpg",
+    "additionalPresenters": []
   },
   {
     "id": "brittany-hogan-3dae214c",
@@ -237,13 +212,8 @@
     ],
     "experienceLevel": "Introductory (Little to no experience with this topic/subject), Intermediate (Some experience with this topic/subject)",
     "sessionFormat": "Interactive Workshop",
-    "headshot": "/speakers/brittany-hogan-3dae214c.jpg",
-    "additionalPresenters": [
-      {
-        "name": "",
-        "email": "bthegrowth37@gmail.com"
-      }
-    ]
+    "headshot": "/speakers/brittany-hogan-3dae214c-1.jpeg",
+    "additionalPresenters": []
   },
   {
     "id": "jami-edwards-d6532ff0",
@@ -284,13 +254,8 @@
     ],
     "experienceLevel": "Introductory (Little to no experience with this topic/subject)",
     "sessionFormat": "Presentation with Discussion",
-    "headshot": "/speakers/jami-edwards-d6532ff0.png",
-    "additionalPresenters": [
-      {
-        "name": "",
-        "email": "edwardsj@msd19.org"
-      }
-    ]
+    "headshot": "/speakers/jami-edwards-d6532ff0-1.png",
+    "additionalPresenters": []
   },
   {
     "id": "anissa-morency-343ee81d",
@@ -319,13 +284,8 @@
     ],
     "experienceLevel": "Introductory (Little to no experience with this topic/subject)",
     "sessionFormat": "Interactive Workshop",
-    "headshot": "/speakers/anissa-morency-343ee81d.jpg",
-    "additionalPresenters": [
-      {
-        "name": "",
-        "email": "amwilliams822@gmail.com"
-      }
-    ]
+    "headshot": "/speakers/anissa-morency-343ee81d-1.jpg",
+    "additionalPresenters": []
   },
   {
     "id": "amy-latta-9386348f",
@@ -361,13 +321,8 @@
     ],
     "experienceLevel": "Introductory (Little to no experience with this topic/subject)",
     "sessionFormat": "Interactive Workshop",
-    "headshot": "/speakers/amy-latta-9386348f.jpg",
-    "additionalPresenters": [
-      {
-        "name": "",
-        "email": "amy@amylatta.com"
-      }
-    ]
+    "headshot": "/speakers/amy-latta-9386348f-1.jpg",
+    "additionalPresenters": []
   },
   {
     "id": "amy-shelton-e298ee90",
@@ -393,13 +348,8 @@
     ],
     "experienceLevel": "Introductory (Little to no experience with this topic/subject), Intermediate (Some experience with this topic/subject), Advanced (A lot of experience with this topic/subject)",
     "sessionFormat": "Presentation with Discussion",
-    "headshot": "/speakers/amy-shelton-e298ee90.jpg",
-    "additionalPresenters": [
-      {
-        "name": "",
-        "email": "amy.shelton@slu.edu"
-      }
-    ]
+    "headshot": "/speakers/amy-shelton-e298ee90-1.jpg",
+    "additionalPresenters": []
   },
   {
     "id": "zacheriah-t-davis-57ea5068",
@@ -442,7 +392,7 @@
     ],
     "experienceLevel": "Introductory (Little to no experience with this topic/subject), Intermediate (Some experience with this topic/subject)",
     "sessionFormat": "Presentation with Discussion",
-    "headshot": "/speakers/zacheriah-t-davis-57ea5068.jpeg",
+    "headshot": "/speakers/zacheriah-t-davis-57ea5068-1.jpeg",
     "additionalPresenters": [
       {
         "name": "DavisZacheriah@gmail. Com"
@@ -494,13 +444,8 @@
     ],
     "experienceLevel": "Introductory (Little to no experience with this topic/subject)",
     "sessionFormat": "Interactive Workshop",
-    "headshot": "/speakers/chelesa-s-holden-105ca3f1.jpeg",
-    "additionalPresenters": [
-      {
-        "name": "",
-        "email": "chelesa@oxygenproject.org"
-      }
-    ]
+    "headshot": "/speakers/chelesa-s-holden-105ca3f1-1.jpeg",
+    "additionalPresenters": []
   },
   {
     "id": "ian-p-buchanan-06554c01",
@@ -550,13 +495,8 @@
     ],
     "experienceLevel": "Introductory (Little to no experience with this topic/subject), Intermediate (Some experience with this topic/subject), Advanced (A lot of experience with this topic/subject)",
     "sessionFormat": "Interactive Workshop",
-    "headshot": "/speakers/ian-p-buchanan-06554c01.jpg",
-    "additionalPresenters": [
-      {
-        "name": "",
-        "email": "ian@niaeducationgroup.org"
-      }
-    ]
+    "headshot": "/speakers/ian-p-buchanan-06554c01-1.jpg",
+    "additionalPresenters": []
   },
   {
     "id": "kacee-mann-2a121455",
@@ -595,13 +535,8 @@
     ],
     "experienceLevel": "Introductory (Little to no experience with this topic/subject), Intermediate (Some experience with this topic/subject)",
     "sessionFormat": "Interactive Workshop",
-    "headshot": "/speakers/kacee-mann-2a121455.jpg",
-    "additionalPresenters": [
-      {
-        "name": "",
-        "email": "kaceeam@gmail.com"
-      }
-    ]
+    "headshot": "/speakers/kacee-mann-2a121455-1.jpg",
+    "additionalPresenters": []
   },
   {
     "id": "deborah-rogers-curtis-96507261",
@@ -631,13 +566,8 @@
     ],
     "experienceLevel": "Introductory (Little to no experience with this topic/subject), Intermediate (Some experience with this topic/subject)",
     "sessionFormat": "Presentation with Discussion",
-    "headshot": "/speakers/deborah-rogers-curtis-96507261.jpg",
-    "additionalPresenters": [
-      {
-        "name": "",
-        "email": "drogers@mobot.org"
-      }
-    ]
+    "headshot": "/speakers/deborah-rogers-curtis-96507261-1.jpg",
+    "additionalPresenters": []
   },
   {
     "id": "courtney-vahle-55b9c2d7",
@@ -667,13 +597,8 @@
     ],
     "experienceLevel": "Introductory (Little to no experience with this topic/subject), Intermediate (Some experience with this topic/subject)",
     "sessionFormat": "Interactive Workshop",
-    "headshot": "/speakers/courtney-vahle-55b9c2d7.jpg",
-    "additionalPresenters": [
-      {
-        "name": "",
-        "email": "courtney.vahle@slu.edu"
-      }
-    ]
+    "headshot": "/speakers/courtney-vahle-55b9c2d7-1.jpg",
+    "additionalPresenters": []
   },
   {
     "id": "pallavi-aggarwal-fa8936dd",
@@ -710,13 +635,8 @@
     ],
     "experienceLevel": "Introductory (Little to no experience with this topic/subject), Intermediate (Some experience with this topic/subject), Advanced (A lot of experience with this topic/subject)",
     "sessionFormat": "Presentation with Discussion",
-    "headshot": "/speakers/pallavi-aggarwal-fa8936dd.png",
-    "additionalPresenters": [
-      {
-        "name": "",
-        "email": "pahr7@umsl.edu"
-      }
-    ]
+    "headshot": "/speakers/pallavi-aggarwal-fa8936dd-1.png",
+    "additionalPresenters": []
   },
   {
     "id": "antonio-pacifico-4b321dc1",
@@ -754,13 +674,8 @@
     ],
     "experienceLevel": "Introductory (Little to no experience with this topic/subject), Intermediate (Some experience with this topic/subject), Advanced (A lot of experience with this topic/subject)",
     "sessionFormat": "Interactive Workshop",
-    "headshot": "/speakers/antonio-pacifico-4b321dc1.png",
-    "additionalPresenters": [
-      {
-        "name": "",
-        "email": "antoniorpacifico@gmail.com"
-      }
-    ]
+    "headshot": "/speakers/antonio-pacifico-4b321dc1-1.png",
+    "additionalPresenters": []
   },
   {
     "id": "ken-patterson-716e3caf",
@@ -805,13 +720,8 @@
     ],
     "experienceLevel": "Introductory (Little to no experience with this topic/subject), Intermediate (Some experience with this topic/subject), Advanced (A lot of experience with this topic/subject)",
     "sessionFormat": "Presentation with Discussion",
-    "headshot": "/speakers/ken-patterson-716e3caf.png",
-    "additionalPresenters": [
-      {
-        "name": "",
-        "email": "okpatterson39@gmail.com"
-      }
-    ]
+    "headshot": "/speakers/ken-patterson-716e3caf-1.png",
+    "additionalPresenters": []
   },
   {
     "id": "makeesha-coleman-d2aebb51",
@@ -847,13 +757,8 @@
     ],
     "experienceLevel": "Intermediate (Some experience with this topic/subject)",
     "sessionFormat": "Interactive Workshop",
-    "headshot": "/speakers/makeesha-coleman-d2aebb51.png",
-    "additionalPresenters": [
-      {
-        "name": "",
-        "email": "mcoleman@envisionlearninghub.org"
-      }
-    ]
+    "headshot": "/speakers/makeesha-coleman-d2aebb51-1.png",
+    "additionalPresenters": []
   },
   {
     "id": "brad-white-4675ccf8",
@@ -893,13 +798,8 @@
     ],
     "experienceLevel": "Introductory (Little to no experience with this topic/subject), Intermediate (Some experience with this topic/subject), Advanced (A lot of experience with this topic/subject)",
     "sessionFormat": "Interactive Workshop, Presentation with Discussion",
-    "headshot": "/speakers/brad-white-4675ccf8.jpeg",
-    "additionalPresenters": [
-      {
-        "name": "",
-        "email": "brad.white@updrafteducation.com"
-      }
-    ]
+    "headshot": "/speakers/brad-white-4675ccf8-1.jpeg",
+    "additionalPresenters": []
   },
   {
     "id": "jess-jones-0fd5e064",
@@ -941,13 +841,8 @@
     ],
     "experienceLevel": "Introductory (Little to no experience with this topic/subject), Intermediate (Some experience with this topic/subject), Advanced (A lot of experience with this topic/subject)",
     "sessionFormat": "Interactive Workshop",
-    "headshot": "/speakers/jess-jones-0fd5e064.png",
-    "additionalPresenters": [
-      {
-        "name": "",
-        "email": "contact@jessjoneseducation.com"
-      }
-    ]
+    "headshot": "/speakers/jess-jones-0fd5e064-1.png",
+    "additionalPresenters": []
   },
   {
     "id": "hayley-chartier-0ef93665",
@@ -974,13 +869,8 @@
     ],
     "experienceLevel": "Introductory (Little to no experience with this topic/subject)",
     "sessionFormat": "Presentation with Discussion",
-    "headshot": "/speakers/hayley-chartier-0ef93665.jpg",
-    "additionalPresenters": [
-      {
-        "name": "",
-        "email": "hayleychartier@gmail.com"
-      }
-    ]
+    "headshot": "/speakers/hayley-chartier-0ef93665-1.jpg",
+    "additionalPresenters": []
   },
   {
     "id": "nurlan-sherimbekov-1598cd70",
@@ -1016,13 +906,8 @@
     ],
     "experienceLevel": "Intermediate (Some experience with this topic/subject)",
     "sessionFormat": "Interactive Workshop",
-    "headshot": "/speakers/nurlan-sherimbekov-1598cd70.jpg",
-    "additionalPresenters": [
-      {
-        "name": "",
-        "email": "nsherimbekov@frontierschools.org"
-      }
-    ]
+    "headshot": "/speakers/nurlan-sherimbekov-1598cd70-1.jpg",
+    "additionalPresenters": []
   },
   {
     "id": "kwira-vickers-a69cd65e",
@@ -1052,13 +937,8 @@
     ],
     "experienceLevel": "Intermediate (Some experience with this topic/subject)",
     "sessionFormat": "Presentation with Discussion",
-    "headshot": "/speakers/kwira-vickers-a69cd65e.jpg",
-    "additionalPresenters": [
-      {
-        "name": "",
-        "email": "kwiravj@gmail.com"
-      }
-    ]
+    "headshot": "/speakers/kwira-vickers-a69cd65e-1.jpg",
+    "additionalPresenters": []
   },
   {
     "id": "meghan-hill-3dfdf31c",
@@ -1102,13 +982,8 @@
     ],
     "experienceLevel": "Introductory (Little to no experience with this topic/subject), Intermediate (Some experience with this topic/subject)",
     "sessionFormat": "Presentation with Discussion",
-    "headshot": "/speakers/meghan-hill-3dfdf31c.jpg",
-    "additionalPresenters": [
-      {
-        "name": "",
-        "email": "meghan@sllis.org"
-      }
-    ]
+    "headshot": "/speakers/meghan-hill-3dfdf31c-1.jpg",
+    "additionalPresenters": []
   },
   {
     "id": "jonelle-r-harris-13c407f6",
@@ -1141,13 +1016,8 @@
     ],
     "experienceLevel": "Intermediate (Some experience with this topic/subject)",
     "sessionFormat": "Interactive Workshop",
-    "headshot": "/speakers/jonelle-r-harris-13c407f6.jpg",
-    "additionalPresenters": [
-      {
-        "name": "",
-        "email": "jonelleharris4@gmail.com"
-      }
-    ]
+    "headshot": "/speakers/jonelle-r-harris-13c407f6-1.jpg",
+    "additionalPresenters": []
   },
   {
     "id": "arkayla-tenney-howard-b90950d2",
@@ -1181,17 +1051,12 @@
     ],
     "experienceLevel": "Introductory (Little to no experience with this topic/subject), Intermediate (Some experience with this topic/subject), Advanced (A lot of experience with this topic/subject)",
     "sessionFormat": "Interactive Workshop",
-    "headshot": "/speakers/arkayla-tenney-howard-b90950d2.jpg",
-    "additionalPresenters": [
-      {
-        "name": "",
-        "email": "arkaylath@gmail.com"
-      }
-    ]
+    "headshot": "/speakers/arkayla-tenney-howard-b90950d2-1.jpg",
+    "additionalPresenters": []
   },
   {
-    "id": "pallavi-chhabra-dr-kacy-shahid-2c7f8f71",
-    "name": "Pallavi Chhabra & Dr. Kacy Shahid",
+    "id": "pallavi-chhabra-ef2ba4d6",
+    "name": "Pallavi Chhabra",
     "title": "Postdoctoral Research Associate",
     "organization": "Washington University in St. Louis",
     "role": "Postdoctoral Research Associate",
@@ -1223,18 +1088,17 @@
     ],
     "experienceLevel": "Intermediate (Some experience with this topic/subject), Advanced (A lot of experience with this topic/subject)",
     "sessionFormat": "Interactive Workshop",
-    "headshot": "/speakers/pallavi-chhabra-dr-kacy-shahid-2c7f8f71.jpg",
+    "headshot": "/speakers/pallavi-chhabra-ef2ba4d6-1.jpg",
     "additionalPresenters": [
       {
-        "name": "",
-        "email": "chhabra@wustl.edu"
+        "name": "Kacy Shahid"
       }
     ]
   },
   {
     "id": "anissa-williams-233fba1d",
     "name": "Anissa Williams",
-    "title": "Dr. Jeremy Mapp, and Roberta McWoods",
+    "title": "Dr. Jeremy Mapp",
     "organization": "Kirkwood School District",
     "role": "Instructional Specialists",
     "bio": "Anissa-District Facilitator for Kirkwood School District\nJeremy-Executive Director of Diversity, Equity, and Inclusion for Kirkwood School District\nRoberta-Leader Mentor for Teachers of Color for Kirkwood School District",
@@ -1266,17 +1130,16 @@
     ],
     "experienceLevel": "Introductory (Little to no experience with this topic/subject)",
     "sessionFormat": "Interactive Workshop",
-    "headshot": "/speakers/anissa-williams-233fba1d.jpg",
+    "headshot": "/speakers/fallback.svg",
     "additionalPresenters": [
       {
-        "name": "",
-        "email": "jeremy.mapp@kirkwoodschools.org"
+        "name": "Roberta McWoods"
       }
     ]
   },
   {
-    "id": "pete-white-dr-susan-marino-0dbbab01",
-    "name": "Pete White & Dr. Susan Marino",
+    "id": "pete-white-6dc6a481",
+    "name": "Pete White",
     "title": "Post Doctoral Research Fellow",
     "organization": "University of Missouri - St. Louis",
     "role": "Post Doctoral Research Fellow",
@@ -1299,11 +1162,10 @@
     ],
     "experienceLevel": "Intermediate (Some experience with this topic/subject)",
     "sessionFormat": "Interactive Workshop, Presentation with Discussion",
-    "headshot": "/speakers/pete-white-dr-susan-marino-0dbbab01.jpeg",
+    "headshot": "/speakers/pete-white-6dc6a481-1.jpeg",
     "additionalPresenters": [
       {
-        "name": "",
-        "email": "pwgbb@umsl.edu"
+        "name": "Susan Marino"
       }
     ]
   },
@@ -1339,12 +1201,7 @@
     ],
     "experienceLevel": "Intermediate (Some experience with this topic/subject), Advanced (A lot of experience with this topic/subject)",
     "sessionFormat": "Presentation with Discussion",
-    "headshot": "/speakers/kem-smith-7e67a8b4.jpeg",
-    "additionalPresenters": [
-      {
-        "name": "",
-        "email": "drkemsmith@gmail.com"
-      }
-    ]
+    "headshot": "/speakers/kem-smith-7e67a8b4-1.jpeg",
+    "additionalPresenters": []
   }
 ]

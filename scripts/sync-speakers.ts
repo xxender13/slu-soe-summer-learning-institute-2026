@@ -7,7 +7,7 @@ import type { AdditionalPresenter, GeneratedSpeaker, SpeakerSyncSummary } from "
 
 const ROOT = process.cwd();
 const RESPONSE_FILE = path.join(ROOT, "assets", "SLU School of Education SLI Call for Proposals  (Responses).xlsx");
-const HEADSHOT_SRC = path.join(ROOT, "assets", "SLI_2026_Headshots_20260529_143840");
+const HEADSHOT_SRC = path.join(ROOT, "assets", "SLI_Headshots_20260529_202056");
 const SPEAKER_DIR = path.join(ROOT, "public", "speakers");
 const OUTPUT_FILE = path.join(ROOT, "data", "generated", "speakers.json");
 const FALLBACK_HEADSHOT = "/speakers/fallback.svg";
@@ -19,6 +19,12 @@ type HeadshotEntry = {
   fileName: string;
   filePath: string;
   normalizedName: string;
+};
+
+type ParsedNameAndTitle = {
+  name: string;
+  title: string;
+  coPresenterNames: string[];
 };
 
 const HEADER_ALIASES = {
@@ -109,10 +115,27 @@ function findValue(row: SheetRow, aliases: readonly string[]) {
   return "";
 }
 
-function parseNameAndTitle(value: string, role: string) {
-  const normalized = value.trim();
-  
-  // Strip common title prefixes from the beginning
+function splitPresenterNames(value: string) {
+  const normalized = value.replace(/\s*(&|\band\b)\s*/gi, "|");
+  const parts = normalized.split("|").map((part) => part.trim()).filter(Boolean);
+  if (parts.length > 1 && parts.every((part) => part.split(/\s+/).length >= 2)) {
+    return parts;
+  }
+  return [value.trim()];
+}
+
+function parseSingleNameAndTitle(value: string, role: string): { name: string; title: string } {
+  let text = value.trim();
+
+  // Preserve Coach prefix when it belongs to the presenter's name
+  const coachMatch = text.match(/^(Coach\s+[^-]+)\s*-\s*(.*)$/i);
+  if (coachMatch) {
+    return {
+      name: coachMatch[1].trim(),
+      title: coachMatch[2].trim() || role
+    };
+  }
+
   const titlePrefixes = [
     "State Representative",
     "Representative",
@@ -127,16 +150,15 @@ function parseNameAndTitle(value: string, role: string) {
     "Principal",
     "Coach"
   ];
-  
-  let text = normalized;
+
   for (const prefix of titlePrefixes) {
     const regex = new RegExp(`^${prefix}\\s*`, "i");
-    if (regex.test(text)) {
+    if (regex.test(text) && !/^Coach\s+/i.test(text)) {
       text = text.replace(regex, "").trim();
       break;
     }
   }
-  
+
   const segments = text
     .split(/\n|\s+\|\s+|\s+-\s+/)
     .map((part) => part.trim())
@@ -164,6 +186,17 @@ function parseNameAndTitle(value: string, role: string) {
   };
 }
 
+function parseNameAndTitle(value: string, role: string): ParsedNameAndTitle {
+  const presenterNames = splitPresenterNames(value);
+  const primary = parseSingleNameAndTitle(presenterNames[0], role);
+
+  return {
+    name: primary.name,
+    title: primary.title,
+    coPresenterNames: presenterNames.slice(1).map((name) => parseSingleNameAndTitle(name, role).name)
+  };
+}
+
 function parseAdditionalPresenters(value: string): AdditionalPresenter[] {
   if (!value || /^n\/?a$|^none$/i.test(value.trim())) return [];
 
@@ -173,7 +206,6 @@ function parseAdditionalPresenters(value: string): AdditionalPresenter[] {
     .split(/\n|;/)
     .map((entry) => entry.trim())
     .filter(Boolean)
-    .slice(0, 2)
     .map((entry) => {
       const email = entry.match(/[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/i)?.[0];
       const name = entry
@@ -182,9 +214,10 @@ function parseAdditionalPresenters(value: string): AdditionalPresenter[] {
         .replace(/\s+/g, " ")
         .trim();
 
-      return email ? { name, email } : { name };
+      return { name, email };
     })
-    .filter((presenter) => presenter.name || presenter.email);
+    .filter((presenter) => presenter.name.length > 0)
+    .slice(0, 2);
 }
 
 function buildSummary(speakers: GeneratedSpeaker[], missingPhotos: string[]): SpeakerSyncSummary {
@@ -215,24 +248,6 @@ function normalizeFileName(fileName: string) {
   return normalizeText(fileName.replace(/\.[^.]+$/, ""));
 }
 
-function bestMatchIndex(nameTokens: string[], candidates: HeadshotEntry[]) {
-  let bestScore = 0;
-  let bestIndex = -1;
-
-  for (let index = 0; index < candidates.length; index += 1) {
-    const candidate = candidates[index];
-    const candidateTokens = tokenize(candidate.normalizedName);
-    const score = nameTokens.reduce((score, token) => (candidateTokens.includes(token) ? score + 1 : score), 0);
-
-    if (score > bestScore) {
-      bestScore = score;
-      bestIndex = index;
-    }
-  }
-
-  return bestIndex;
-}
-
 async function buildHeadshotIndex() {
   const entries: HeadshotEntry[] = [];
   const sessionFolders = await readdir(HEADSHOT_SRC);
@@ -245,39 +260,53 @@ async function buildHeadshotIndex() {
 
     for (const fileName of files) {
       const filePath = path.join(sessionPath, fileName);
-      if ((await stat(filePath)).isFile()) {
-        entries.push({
-          sessionKey,
-          fileName,
-          filePath,
-          normalizedName: normalizeFileName(fileName)
-        });
-      }
+      if (!(await stat(filePath)).isFile()) continue;
+
+      const extension = path.extname(fileName).toLowerCase();
+      if (![".jpg", ".jpeg", ".png", ".webp"].includes(extension)) continue;
+
+      entries.push({
+        sessionKey,
+        fileName,
+        filePath,
+        normalizedName: normalizeFileName(fileName)
+      });
     }
   }
 
   return entries;
 }
 
-function findHeadshot(entries: HeadshotEntry[], speakerName: string, sessionTitle: string) {
-  const nameTokens = tokenize(speakerName);
+function findSessionHeadshots(entries: HeadshotEntry[], sessionTitle: string) {
   const sessionKey = normalizeSessionKey(sessionTitle);
-
   const folderCandidates = entries.filter((entry) => entry.sessionKey === sessionKey);
   if (folderCandidates.length) {
-    const exactIndex = bestMatchIndex(nameTokens, folderCandidates);
-    if (exactIndex !== -1 && tokenize(folderCandidates[exactIndex].normalizedName).some((token) => nameTokens.includes(token))) {
-      return folderCandidates[exactIndex];
+    return folderCandidates;
+  }
+
+  const sessionTokens = tokenize(sessionTitle);
+  const folders = new Map<string, { entries: HeadshotEntry[]; score: number }>();
+
+  for (const entry of entries) {
+    const key = entry.sessionKey;
+    if (!folders.has(key)) folders.set(key, { entries: [], score: 0 });
+    folders.get(key)!.entries.push(entry);
+  }
+
+  for (const [key, data] of folders.entries()) {
+    const folderTokens = tokenize(key);
+    const score = folderTokens.reduce((sum, token) => (sessionTokens.includes(token) ? sum + 1 : sum), 0);
+    data.score = score;
+  }
+
+  let bestMatch: { entries: HeadshotEntry[]; score: number } | null = null;
+  for (const data of folders.values()) {
+    if (!bestMatch || data.score > bestMatch.score) {
+      bestMatch = data;
     }
-    if (folderCandidates.length === 1) return folderCandidates[0];
   }
 
-  const globalIndex = bestMatchIndex(nameTokens, entries);
-  if (globalIndex !== -1 && tokenize(entries[globalIndex].normalizedName).some((token) => nameTokens.includes(token))) {
-    return entries[globalIndex];
-  }
-
-  return null;
+  return bestMatch && bestMatch.score >= 2 ? bestMatch.entries : [];
 }
 
 async function parseSheetRows() {
@@ -311,10 +340,17 @@ async function main() {
     const parsedName = parseNameAndTitle(nameAndTitle, role);
     const sessionTitle = findValue(row, HEADER_ALIASES.sessionTitle);
     const id = stableId(parsedName.name, sessionTitle, index);
-    const entry = findHeadshot(headshotEntries, parsedName.name, sessionTitle);
-    const headshotPath = entry ? await copyHeadshot(entry, id) : FALLBACK_HEADSHOT;
+    const sessionHeadshotEntries = findSessionHeadshots(headshotEntries, sessionTitle);
+    const copiedHeadshots = sessionHeadshotEntries.length
+      ? await Promise.all(
+          sessionHeadshotEntries
+            .slice(0, 1)
+            .map((entry, index) => copyHeadshot(entry, `${id}-${index + 1}`))
+        )
+      : [FALLBACK_HEADSHOT];
 
-    if (!entry) missingPhotos.push(parsedName.name || id);
+    const headshotPath = copiedHeadshots[0] || FALLBACK_HEADSHOT;
+    if (!sessionHeadshotEntries.length) missingPhotos.push(parsedName.name || id);
 
     const bio = findValue(row, HEADER_ALIASES.bio);
     allSpeakers.push({
@@ -334,7 +370,11 @@ async function main() {
       experienceLevel: findValue(row, HEADER_ALIASES.experienceLevel),
       sessionFormat: findValue(row, HEADER_ALIASES.sessionFormat),
       headshot: headshotPath,
-      additionalPresenters: parseAdditionalPresenters(findValue(row, HEADER_ALIASES.additionalPresenters))
+      headshots: copiedHeadshots.length > 1 ? copiedHeadshots : undefined,
+      additionalPresenters: [
+        ...parseAdditionalPresenters(findValue(row, HEADER_ALIASES.additionalPresenters)),
+        ...parsedName.coPresenterNames.map((name) => ({ name }))
+      ]
     });
   }
   // Deduplicate speakers: for same name, prefer entry with specific session title match if multiple exist

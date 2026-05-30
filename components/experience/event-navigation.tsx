@@ -49,8 +49,7 @@ export function EventNavigation() {
           <BrandLogo
             tone={isPastHero ? "dark" : "light"}
             orientation="horizontal"
-            className="h-20 w-72 overflow-hidden sm:w-80"
-            imageClassName="h-full w-full max-h-none max-w-none object-cover object-[center_52%]"
+            className="h-20 w-72 overflow-hidden sm:h-24 sm:w-80"
             priority
           />
         </a>
